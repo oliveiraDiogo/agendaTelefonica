@@ -204,8 +204,6 @@
     <Content Include="Views\Contato\Index.cshtml" />
     <Content Include="Views\Contato\Create.cshtml" />
     <Content Include="Views\Contato\Edit.cshtml" />
-    <Content Include="Views\Contato\CreateEmail.cshtml" />
-    <Content Include="Views\Contato\CreateTelefone.cshtml" />
     <Content Include="Views\Telefone\Index.cshtml" />
     <Content Include="Views\Telefone\Edit.cshtml" />
     <Content Include="Views\Telefone\Create.cshtml" />
