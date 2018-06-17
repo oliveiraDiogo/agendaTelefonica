@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Diogo.AT.Domain.Contato.TelefoneMO>
+
+<div class="row mb-4">
+    <h4 class="col-11">@ViewBag.NomeContato</h4>
+    <h5 class="col-11">Telefones</h5>
+</div>
+
+<div class="row col-12">
+    <div class="col-md-3">
+        @Html.ActionLink("Adicionar um novo telefone", "Create", "Telefone",new { idContato = ViewBag.IdContato }, htmlAttributes: new { @class = "btn btn-success mb-2" })
+    </div>
+</div>
+
+<div class="row col-6">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DDD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classificacao)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DDD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classificacao)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id, idContato = ViewBag.IdContato }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.Id, idContato = ViewBag.IdContato })
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-offset-2 col-md-10">
+        @Html.ActionLink("Listar os meus contatos", "Index", "", new { id = ViewBag.IdContato }, htmlAttributes: new { @class = "btn btn-default" })
+    </div>
+</div>
+
+

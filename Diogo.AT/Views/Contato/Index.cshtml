@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Diogo.AT.Domain.Contato.ContatoMO>
+
+@using (Html.BeginForm("Index", "Contato",
+            new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "" }))
+{
+    <div class="row mb-4">
+        <h4>Meus contatos</h4>
+    </div>
+
+    <div class="row col-12">
+        <div class="col-md-3">
+            @Html.ActionLink("Adicionar um contato", "Create", "", htmlAttributes: new { @class = "btn btn-success mb-2" })
+        </div>
+        <div class="col-md-8">
+            @Html.TextBox("busca", "", "", htmlAttributes: new { @class = "form-control", @placeholder = "Buscar" })
+        </div>
+        <button type="submit" value="Buscar" class="btn btn-primary mb-2">Buscar</button>
+
+    </div>
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <ul class="list-group">
+                    @foreach (var telefone in item.Telefones)
+                    {
+                        <li class="list-group-item">@Html.DisplayFor(modelItem => telefone.DDD) - @Html.DisplayFor(modelItem => telefone.Numero) | @Html.DisplayFor(modelItem => telefone.Classificacao)</li>
+
+                    }
+
+                </ul>
+            </td>
+            <td>
+                <ul class="list-group">
+                    @foreach (var email in item.Emails)
+                    {
+                        <li class="list-group-item">@Html.DisplayFor(modelItem => email.Email) | @Html.DisplayFor(modelItem => email.Classificacao)</li>
+                    }
+
+                </ul>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

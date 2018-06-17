@@ -1,0 +1,82 @@
+﻿@model Diogo.AT.Domain.Contato.ContatoMO
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Editando contato</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger text-alerta" })
+
+    <div class="row col-6">
+        <div class="col-lg-11 mb-3">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+            <div>
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger text-alerta" })
+            </div>
+        </div>
+    </div>    
+    @*<div class="row col-6">
+            <div class="col-md-2 mb-3">
+                @Html.LabelFor(model => model.Telefones.FirstOrDefault().DDD, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Telefones.FirstOrDefault().DDD, "DDD", new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    @Html.ValidationMessageFor(model => model.Telefones.FirstOrDefault().DDD, "", new { @class = "text-danger text-alerta" })
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                @Html.LabelFor(model => model.Telefones.FirstOrDefault().Numero, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.Telefones.FirstOrDefault().Numero, "Numero", new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                    @Html.ValidationMessageFor(model => model.Telefones.FirstOrDefault().Numero, "", new { @class = "text-danger text-alerta" })
+                </div>
+            </div>
+            <div class="col-md-5 mb-3">
+                @Html.Label("Classificação", htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EnumDropDownListFor(model => model.Telefones.FirstOrDefault().Classificacao, "Selecione...", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Telefones.FirstOrDefault().Classificacao, "", new { @class = "text-danger text-alerta" })
+                </div>
+            </div>
+        </div>*@
+
+    <div class="row col-6">
+        @Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-11 mb-3">
+            @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger text-alerta" })
+        </div>
+    </div>
+
+    <div class="row col-6">
+        @Html.LabelFor(model => model.Endereco, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-11 mb-3">
+            @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger text-alerta" })
+        </div>
+    </div>
+
+    <div class="row col-6">
+        <div class="col-md-4 mb-3 ">
+            @Html.ActionLink("Editar telefones", "", "Telefone", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-default float-right" })
+        </div>
+        <div class="col-md-4 mb-3 ">
+            @Html.ActionLink("Editar emails", "", "Email", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-default float-right" })
+        </div>
+        <div class="col-md-3 mb-3 ">
+            <input type="submit" value="Salvar" class="btn btn-primary float-right" />
+        </div>
+
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Listar os meu contatos", "Index")
+</div>
